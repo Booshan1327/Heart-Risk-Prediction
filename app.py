@@ -14,7 +14,7 @@ st.markdown("Enter your health information to assess your heart disease risk.")
 
 # Input form
 with st.form("health_form"):
-    age = st.slider("Age", 20, 100, 50)
+    age = st.slider("Age", 1, 150, 50)
     sex = st.radio("Sex", ["Male", "Female"])
     chest_pain_type = st.selectbox("Chest Pain Type", [0, 1, 2, 3])
     resting_bp = st.slider("Resting BP (mmHg)", 80, 200, 120)
