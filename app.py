@@ -30,7 +30,7 @@ with st.form("health_form"):
     submit = st.form_submit_button("Predict Risk")
 
 if submit:
-        input_data = pd.DataFrame([{
+    input_data = pd.DataFrame([{
         'Age': age,
         'Sex': 1 if sex == "Male" else 0,
         'Chest pain type': chest_pain_type,
@@ -53,11 +53,12 @@ if submit:
     # Output
     st.subheader(f"🧠 Risk Probability: {risk_percent:.2f}%")
 
-if prediction_proba >= 0.7:
-    st.error("🔴 High Risk: Immediate consultation recommended!")
-elif prediction_proba >= 0.5:
-    st.warning("🟠 Moderate Risk: Regular checkups advised.")
-else:
-    st.success("🟢 Low Risk: Keep maintaining a healthy lifestyle!")
+    if prediction_proba >= 0.7:
+        st.error("🔴 High Risk: Immediate consultation recommended!")
+    elif prediction_proba >= 0.5:
+        st.warning("🟠 Moderate Risk: Regular checkups advised.")
+    else:
+        st.success("🟢 Low Risk: Keep maintaining a healthy lifestyle!")
 
-st.caption("📌 Disclaimer: This is a machine learning based prediction. Always consult a doctor for medical advice.")
+    st.caption("📌 Disclaimer: This is a machine learning based prediction. Always consult a doctor for medical advice.")
+
