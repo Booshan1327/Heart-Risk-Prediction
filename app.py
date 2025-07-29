@@ -9,7 +9,7 @@ with open('heart_model.pkl', 'rb') as f:
 
 # Page config
 st.set_page_config(page_title="Heart Disease Risk Predictor", layout="centered")
-st.title("❤️ Heart Disease Risk Predictor")
+st.title("🫀 Heart Disease Risk Predictor")
 st.markdown("Enter your health information to assess your heart disease risk.")
 
 # Input form
