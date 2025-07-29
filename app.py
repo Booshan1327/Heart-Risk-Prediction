@@ -60,12 +60,4 @@ elif prediction_proba >= 0.5:
 else:
     st.success("🟢 Low Risk: Keep maintaining a healthy lifestyle!")
 
-
-    if prediction_proba >= 0.7:
-        st.error("🔴 High Risk: Immediate consultation recommended!")
-    elif prediction_proba >= 0.5:
-        st.warning("🟠 Moderate Risk: Regular checkups advised.")
-    else:
-        st.success("🟢 Low Risk: Keep maintaining a healthy lifestyle!")
-
-    st.caption("📌 Disclaimer: This is a machine learning based prediction. Always consult a doctor for medical advice.")
+st.caption("📌 Disclaimer: This is a machine learning based prediction. Always consult a doctor for medical advice.")
