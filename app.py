@@ -25,25 +25,25 @@ with st.form("health_form"):
     exercise_angina = st.radio("Exercise-induced Angina", [0, 1])
     oldpeak = st.slider("ST Depression", 0.0, 6.0, 1.0)
     slope = st.selectbox("Slope of ST Segment", [0, 1, 2])
-    ca = st.selectbox("Number of Major Vessels", [0, 1, 2, 3])
+    ca = st.selectbox("Number of Major Vessels (Fluoroscopy)", [0, 1, 2, 3])
     thal = st.selectbox("Thalassemia", [0, 1, 2, 3])
     submit = st.form_submit_button("Predict Risk")
 
 if submit:
-    input_data = pd.DataFrame([{
+        input_data = pd.DataFrame([{
         'Age': age,
         'Sex': 1 if sex == "Male" else 0,
-        'ChestPainType': chest_pain_type,
-        'RestingBP': resting_bp,
+        'Chest pain type': chest_pain_type,
+        'BP': resting_bp,
         'Cholesterol': cholesterol,
-        'FastingBS': fasting_bs,
-        'RestingECG': rest_ecg,
-        'MaxHR': max_hr,
-        'ExerciseAngina': exercise_angina,
-        'Oldpeak': oldpeak,
-        'ST_Slope': slope,
-        'CA': ca,
-        'Thalassemia': thal
+        'FBS over 120': fasting_bs,
+        'EKG results': rest_ecg,
+        'Max HR': max_hr,
+        'Exercise angina': exercise_angina,
+        'ST depression': oldpeak,
+        'Slope of ST': slope,
+        'Number of vessels fluro': ca,
+        'Thallium': thal
     }])
 
     # Predict
@@ -52,6 +52,14 @@ if submit:
 
     # Output
     st.subheader(f"🧠 Risk Probability: {risk_percent:.2f}%")
+
+if prediction_proba >= 0.7:
+    st.error("🔴 High Risk: Immediate consultation recommended!")
+elif prediction_proba >= 0.5:
+    st.warning("🟠 Moderate Risk: Regular checkups advised.")
+else:
+    st.success("🟢 Low Risk: Keep maintaining a healthy lifestyle!")
+
 
     if prediction_proba >= 0.7:
         st.error("🔴 High Risk: Immediate consultation recommended!")
