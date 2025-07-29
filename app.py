@@ -61,10 +61,3 @@ if submit:
         st.success("🟢 Low Risk: Keep maintaining a healthy lifestyle!")
 
     st.caption("📌 Disclaimer: This is a machine learning based prediction. Always consult a doctor for medical advice.")
-# Save to app.py
-with open('app.py', 'w') as f:
-    f.write(code)
-
-# Download the file
-from google.colab import files
-files.download('app.py')
